@@ -14,7 +14,7 @@ public class TemperatureConversion {
     
     public static float fromCelsiusToFahrenheit(float temp){
         
-        return temp*((float)9/5)+32;
+        return ((float)9/5)*temp+32;
     }
     
     public static float fromFahrenheitToCelsius(float temp){

@@ -43,7 +43,7 @@ public class TemperatureFXMLController implements Initializable {
     //actions
     @FXML
     public void btnComputeAction(){
-        float c, f=0;
+        float c=0, f=0;
         if(rbtnCelsius.isSelected()){
             c = Float.parseFloat(txtCelsius.getText());
             f =  TemperatureConversion.fromCelsiusToFahrenheit(c);
@@ -54,16 +54,12 @@ public class TemperatureFXMLController implements Initializable {
             f = TemperatureConversion.fromFahrenheitToCelsius(c);
             
         }
-        else {
-//            JOptionPane.showMessageDialog(null,"Selecciona un radio button");
-//            return;
-        }
         txtResult.setText(String.valueOf(f));
     }
     
     @FXML
     public void btnCleanAction(){
-        
+        cleanTextFields();
     }
     @FXML
     public void rbtnCelsiusAction(){
