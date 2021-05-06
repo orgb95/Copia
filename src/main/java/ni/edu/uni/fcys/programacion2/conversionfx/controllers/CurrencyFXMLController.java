@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import ni.edu.uni.fcys.programacion2.conversionfx.core.CurrencyConversion;
 
 /**
  * FXML Controller class
@@ -34,12 +35,16 @@ public class CurrencyFXMLController implements Initializable {
     private ObservableList<String> items;
     @FXML
     public void btnComputeAction(){
-        float from,result;
+        float from = 0,result=0;
         if(cmbFrom.getValue().equals("Cordobas")){
+             from = Float.parseFloat(txtFrom.getText());
             if(cmbTo.getValue().equals("Dolares"))
             from = Float.parseFloat(txtFrom.getText());
-            
+            result =  CurrencyConversion.fromCordobasToDolar(from);
+            System.out.println(result);
         }
+        
+        txtResult.setText(String.valueOf(result));
         
     }
     /**
