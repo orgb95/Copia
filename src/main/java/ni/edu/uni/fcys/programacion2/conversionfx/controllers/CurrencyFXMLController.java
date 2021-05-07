@@ -34,18 +34,56 @@ public class CurrencyFXMLController implements Initializable {
     public Button btnCompute;
     private ObservableList<String> items;
     @FXML
+    public Button btnClear;
+    @FXML
     public void btnComputeAction(){
         float from = 0,result=0;
         if(cmbFrom.getValue().equals("Cordobas")){
-             from = Float.parseFloat(txtFrom.getText());
-            if(cmbTo.getValue().equals("Dolares"))
             from = Float.parseFloat(txtFrom.getText());
-            result =  CurrencyConversion.fromCordobasToDolar(from);
-            System.out.println(result);
+            if(cmbTo.getValue().equals("Dolares")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromCordobasToDolar(from);
+            }else if(cmbTo.getValue().equals("Euro")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromCordobasToEuros(from);
+            }else {
+                result = from;
+            }
+        }else if(cmbFrom.getValue().equals("Dolares")){
+            from = Float.parseFloat(txtFrom.getText());
+            if(cmbTo.getValue().equals("Cordobas")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromDolarsToCordobas(from);
+            }else if(cmbTo.getValue().equals("Euro")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromDolarsToEuros(from);
+            }else {
+                result = from;
+            }
+        }else if(cmbFrom.getValue().equals("Euros")){
+            from = Float.parseFloat(txtFrom.getText());
+            if(cmbTo.getValue().equals("Cordobas")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromEurosToCordobas(from);
+            }else if(cmbTo.getValue().equals("Dolar")){
+                from = Float.parseFloat(txtFrom.getText());
+                result =  CurrencyConversion.fromEurosToDolars(from);
+            }else {
+                result = from;
+            }
         }
         
         txtResult.setText(String.valueOf(result));
         
+    }
+    
+    public void btnClearAction(){
+        cleanTextFields();
+    }
+    
+    private void cleanTextFields(){
+        txtFrom.setText("");
+        txtResult.setText("");
     }
     /**
      * Initializes the controller class.
